@@ -1,4 +1,4 @@
-/* ESTILOS GENERALES */
+/* GENERAL */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,9 +7,8 @@ body {
     color: #333;
 }
 
-/* HEADER */
 header {
-    background-color: #003366;
+    background-color: #7b1113;
     color: white;
     text-align: center;
     padding: 30px 20px;
@@ -17,7 +16,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
 header img {
@@ -25,12 +24,12 @@ header img {
     width: 100px;
 }
 
-/* MENÚ DE NAVEGACIÓN */
+/* NAVBAR */
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #0055a5;
+    background-color: #a21c1e;
     text-align: center;
 }
 
@@ -40,35 +39,24 @@ nav ul li {
 
 nav ul li a {
     display: inline-block;
-    padding: 15px 25px;
+    padding: 12px 20px;
     text-decoration: none;
     color: white;
     font-weight: bold;
-    transition: background 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: #003366;
+    background-color: #7b1113;
 }
 
 /* SECCIONES */
 section {
     width: 80%;
-    margin: 30px auto;
-    padding: 25px;
+    margin: 20px auto;
+    padding: 20px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-section h2 {
-    color: #003366;
-    margin-top: 0;
-}
-
-section h3 {
-    margin-top: 20px;
-    color: #0055a5;
 }
 
 /* TABLAS */
@@ -79,33 +67,70 @@ table {
 }
 
 table th {
-    background-color: #003366;
+    background-color: #7b1113;
     color: white;
-    padding: 12px;
+    padding: 10px;
     text-align: left;
-    border-bottom: 2px solid #002244;
 }
 
 table td {
     border: 1px solid #ccc;
-    padding: 12px;
+    padding: 10px;
 }
 
-/* MULTIMEDIA */
-video, audio {
-    display: block;
-    margin: 15px auto;
-    max-width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+/* VIDEO Y AUDIO */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    background-color: #003366;
+    background-color: #7b1113;
     color: white;
     padding: 15px;
     margin-top: 40px;
     font-size: 0.9em;
+}
+
+/* 🔥 RESPONSIVE - móviles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul li {
+        display: block;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px;
+    }
+
+    section {
+        width: 95%;
+        padding: 15px;
+    }
+
+    table th, table td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
 }

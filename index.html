@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>El Faro</title>
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <h1>El Faro</h1>
-        <img src="Logo.png" alt="Logo El Faro" width="120">
+        <img src="logo.png" alt="Logo El Faro" width="120">
     </header>
 
-    <!-- MENÚ -->
-    <nav>
-        <ul>
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#deporte">Deporte</a></li>
             <li><a href="#negocios">Negocios</a></li>
@@ -32,19 +33,18 @@
         </table>
 
         <h3>Video Destacado</h3>
-        <!-- EMBED de YouTube -->
-        <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/P-nK529Hf_U" 
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/P-nK529Hf_U" 
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
         <h3>Audio Destacado</h3>
-        <!-- EMBED de SoundCloud -->
         <iframe width="100%" height="166" scrolling="no" frameborder="no" 
             allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24&color=%23003366&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false">
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24&color=%23003366&auto_play=false">
         </iframe>
     </section>
 
