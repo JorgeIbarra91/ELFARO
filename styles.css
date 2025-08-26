@@ -1,9 +1,10 @@
-/* Layout de 2 columnas en la página principal */
+/* Layout 2 columnas en página principal */
 .contenedor {
   display: flex;
   gap: 20px;
   width: 90%;
   margin: 20px auto;
+  flex-wrap: wrap;
 }
 
 .noticias {
@@ -14,6 +15,7 @@
   flex: 1;
 }
 
+/* Responsive video */
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
