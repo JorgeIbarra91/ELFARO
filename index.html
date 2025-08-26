@@ -1,78 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>El Faro</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>El Faro</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <h1>El Faro</h1>
-        <img src="Logo.png" alt="Logo El Faro" width="120">
-    </header>
+  <!-- HEADER -->
+  <header>
+    <h1>EL FARO</h1>
+    <img src="Logo.png" alt="Logo El Faro" width="100">
+  </header>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#deporte">Deporte</a></li>
-            <li><a href="#negocios">Negocios</a></li>
-        </ul>
-    </nav>
+  <!-- MENÚ -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="deporte.html">Deporte</a></li>
+      <li><a href="negocios.html">Negocios</a></li>
+    </ul>
+  </nav>
 
-    <!-- NOTICIAS GENERALES -->
-    <section id="inicio">
-        <h2>Noticias Generales</h2>
-        <table>
-            <tr><th>Título</th><th>Categoría</th><th>Texto</th></tr>
-            <tr><td>Gobierno anuncia inversión en educación</td><td>General</td><td>Se aprobó un aumento del 20% en el presupuesto educativo.</td></tr>
-            <tr><td>Nueva ley ambiental aprobada</td><td>General</td><td>Se implementarán medidas más estrictas contra la contaminación.</td></tr>
-            <tr><td>Expo Cultural 2025</td><td>General</td><td>La feria cultural reunirá a artistas de todo el país.</td></tr>
-        </table>
-
-        <h3>Video Destacado</h3>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/P-nK529Hf_U" 
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <h3>Audio Destacado</h3>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" 
-            allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24&color=%23003366&auto_play=false">
-        </iframe>
+  <!-- CONTENIDO PRINCIPAL EN 2 COLUMNAS -->
+  <main class="contenedor">
+    <!-- Noticias Generales -->
+    <section class="noticias">
+      <h2>Noticias Generales</h2>
+      <article>
+        <h3>Gobierno anuncia inversión en educación</h3>
+        <p>Se aprobó un aumento del 20% en el presupuesto educativo.</p>
+      </article>
+      <article>
+        <h3>Nueva ley ambiental aprobada</h3>
+        <p>Se implementarán medidas más estrictas contra la contaminación.</p>
+      </article>
+      <article>
+        <h3>Expo Cultural 2025</h3>
+        <p>La feria cultural reunirá a artistas de todo el país.</p>
+      </article>
     </section>
 
-    <!-- NOTICIAS DEPORTES -->
-    <section id="deporte">
-        <h2>Deportes</h2>
-        <table>
-            <tr><th>Título</th><th>Categoría</th><th>Texto</th></tr>
-            <tr><td>Selección lista para eliminatorias</td><td>Deporte</td><td>El DT confirmó la nómina de 23 jugadores.</td></tr>
-            <tr><td>Maratón de Santiago rompe récord</td><td>Deporte</td><td>Más de 50 mil corredores participaron este año.</td></tr>
-            <tr><td>Torneo Nacional de Futbol Sala</td><td>Deporte</td><td>Equipos de 10 regiones competirán durante el fin de semana.</td></tr>
-        </table>
-    </section>
+    <!-- Multimedia (Video y Audio al lado derecho) -->
+    <aside class="multimedia">
+      <h3>Video Destacado</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/P-nK529Hf_U"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
 
-    <!-- NOTICIAS NEGOCIOS -->
-    <section id="negocios">
-        <h2>Negocios</h2>
-        <table>
-            <tr><th>Título</th><th>Categoría</th><th>Texto</th></tr>
-            <tr><td>Startup chilena recibe inversión</td><td>Negocios</td><td>La empresa de software logró financiamiento internacional.</td></tr>
-            <tr><td>Aumento en exportaciones agrícolas</td><td>Negocios</td><td>El sector reporta un crecimiento del 15% en envíos.</td></tr>
-            <tr><td>Nueva incubadora de emprendimientos</td><td>Negocios</td><td>AIEP lanza programa para apoyar a jóvenes emprendedores.</td></tr>
-        </table>
-    </section>
+      <h3>Audio Destacado</h3>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no"
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24">
+      </iframe>
+    </aside>
+  </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 El Faro - Todos los derechos reservados</p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 El Faro - Todos los derechos reservados</p>
+  </footer>
 </body>
 </html>
