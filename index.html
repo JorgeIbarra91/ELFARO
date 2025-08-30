@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>El Faro - Inicio</title>
-  <link rel="stylesheet" href="styles.css?v=10">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enlace al CSS con versionado para evitar caché -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
   <!-- HEADER -->
   <header>
     <h1>EL FARO</h1>
-    <img src="Logo.png" alt="Logo El Faro" width="120">
+    <img src="assets/images/logo.png" alt="Logo El Faro" width="120" />
   </header>
 
-  <!-- MENÚ -->
+  <!-- MENÚ DE NAVEGACIÓN -->
   <nav>
     <ul>
+      <!-- Punto 6: vínculos con estilo hover (negrita y sin subrayado) -->
       <li><a href="index.html">Inicio</a></li>
       <li><a href="deporte.html">Deporte</a></li>
       <li><a href="negocios.html">Negocios</a></li>
     </ul>
   </nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
+  <!-- CONTENIDO PRINCIPAL: GRID 2 COLUMNAS -->
   <main class="contenedor">
-    <!-- Noticias -->
+    <!-- SECCIÓN DE NOTICIAS: FLEXBOX para artículos -->
     <section class="noticias">
-      <h2>Noticias Generales</h2>
       <article>
         <h3>Gobierno anuncia inversión en educación</h3>
         <p>Se aprobó un aumento del 20% en el presupuesto educativo.</p>
@@ -41,18 +42,24 @@
       </article>
     </section>
 
-    <!-- Multimedia -->
+    <!-- SECCIÓN MULTIMEDIA -->
     <aside class="multimedia">
       <h3>Video Destacado</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/P-nK529Hf_U"
-                frameborder="0" allowfullscreen></iframe>
+        <iframe
+          src="https://www.youtube.com/embed/P-nK529Hf_U"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
       </div>
 
       <h3>Audio Destacado</h3>
-      <iframe width="100%" height="166" frameborder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24">
-      </iframe>
+      <iframe
+        width="100%"
+        height="166"
+        frameborder="no"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24"
+      ></iframe>
     </aside>
   </main>
 

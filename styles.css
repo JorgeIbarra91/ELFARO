@@ -1,93 +1,183 @@
-/* GENERAL */
-body {
+/* ===========================
+   RESET BÁSICO
+   =========================== */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  color: #222;
+  padding: 0;
 }
 
-/* HEADER */
+/* ===========================
+   ESTILO GENERAL DEL CUERPO
+   =========================== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ===========================
+   HEADER
+   =========================== */
 header {
-  background: #0d47a1;  /* azul oscuro */
+  background-color: #0d47a1; /* Azul oscuro */
   color: white;
   text-align: center;
   padding: 20px;
 }
-header h1 { margin: 0; font-size: 2.2em; }
-header img { margin-top: 10px; }
 
-/* NAV */
+header h1 {
+  font-size: 2.5rem;
+}
+
+header img {
+  margin-top: 10px;
+  width: 120px;
+}
+
+/* ===========================
+   NAVEGACIÓN (MENÚ)
+   =========================== */
+/* Punto 6: Enlaces con subrayado por defecto y negrita sin subrayado al hover */
 nav ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
-  background: #1976d2;
-  text-align: center;
-}
-nav ul li { display: inline-block; }
-nav ul li a {
-  display: inline-block;
-  padding: 12px 20px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-nav ul li a:hover {
-  background: #0d47a1;
+  background-color: #1976d2; /* Azul principal */
+  display: flex;
+  justify-content: center;
 }
 
-/* INDEX (dos columnas) */
-.contenedor {
-  display: flex;
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: underline; /* subrayado por defecto */
+  font-weight: normal;         /* peso normal por defecto */
+  padding: 15px 10px;
+  display: block;
+  transition: font-weight 0.3s ease, text-decoration 0.3s ease;
+}
+
+nav ul li a:hover {
+  font-weight: bold;           /* negrita al pasar cursor */
+  text-decoration: none;       /* quita subrayado al pasar cursor */
+  cursor: pointer;
+}
+
+/* ===========================
+   LAYOUT PRINCIPAL CON GRID
+   =========================== */
+main.contenedor {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 2 columnas: noticias + multimedia */
   gap: 20px;
   width: 90%;
+  max-width: 1200px;
   margin: 20px auto;
-  flex-wrap: wrap;
 }
-.noticias { flex: 2; }
-.multimedia { flex: 1; }
+
+/* ===========================
+   NOTICIAS (FLEXBOX)
+   =========================== */
+.noticias {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .noticias article {
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.noticias h3 { color: #1565c0; }
 
-/* Video responsive */
+/* Efecto hover en artículos de noticias */
+.noticias article:hover {
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.4);
+  transform: translateY(-5px);
+}
+
+.noticias h3 {
+  color: #0d47a1;
+  margin-bottom: 10px;
+}
+
+/* ===========================
+   MULTIMEDIA
+   =========================== */
+.multimedia {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
   height: 0;
-}
-.video-container iframe {
-  position: absolute;
-  top:0;left:0;
-  width:100%;height:100%;
+  margin-bottom: 20px;
 }
 
-/* Paginas secundarias */
-.pagina {
-  width: 80%;
-  margin: 20px auto;
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===========================
+   PÁGINAS SECUNDARIAS (DEPORTES Y NEGOCIOS)
+   =========================== */
+main.pagina {
+  max-width: 800px;
+  margin: 30px auto;
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.pagina h2 { color: #0d47a1; }
 
-/* FOOTER */
+main.pagina h2 {
+  color: #0d47a1;
+  margin-bottom: 15px;
+}
+
+main.pagina ul {
+  list-style: disc inside;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
 footer {
-  background: #0d47a1;
+  background-color: #0d47a1;
   color: white;
   text-align: center;
   padding: 15px;
-  margin-top: 30px;
+  margin-top: 40px;
+  font-size: 0.9rem;
 }
 
-/* Responsive */
+/* ===========================
+   RESPONSIVE (MÓVILES)
+   =========================== */
 @media (max-width: 768px) {
-  .contenedor { flex-direction: column; }
-  nav ul li { display: block; }
+  nav ul {
+    flex-direction: column;
+  }
+
+  main.contenedor {
+    grid-template-columns: 1fr;
+  }
+
+  .multimedia {
+    margin-top: 20px;
+  }
 }
