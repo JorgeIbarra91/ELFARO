@@ -1,183 +1,84 @@
-/* ===========================
-   RESET BÁSICO
-   =========================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* ===========================
-   ESTILO GENERAL DEL CUERPO
-   =========================== */
+/* ================================
+   ESTILOS GENERALES DEL SITIO
+   ================================ */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
-  color: #222;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
   line-height: 1.6;
 }
 
-/* ===========================
-   HEADER
-   =========================== */
 header {
-  background-color: #0d47a1; /* Azul oscuro */
-  color: white;
   text-align: center;
-  padding: 20px;
-}
-
-header h1 {
-  font-size: 2.5rem;
+  background: #004080;
+  color: white;
+  padding: 20px 0;
 }
 
 header img {
-  margin-top: 10px;
-  width: 120px;
-}
-
-/* ===========================
-   NAVEGACIÓN (MENÚ)
-   =========================== */
-/* Punto 6: Enlaces con subrayado por defecto y negrita sin subrayado al hover */
-nav ul {
-  list-style: none;
-  background-color: #1976d2; /* Azul principal */
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: underline; /* subrayado por defecto */
-  font-weight: normal;         /* peso normal por defecto */
-  padding: 15px 10px;
   display: block;
-  transition: font-weight 0.3s ease, text-decoration 0.3s ease;
+  margin: 0 auto 10px;
 }
 
-nav ul li a:hover {
-  font-weight: bold;           /* negrita al pasar cursor */
-  text-decoration: none;       /* quita subrayado al pasar cursor */
-  cursor: pointer;
+nav {
+  margin-top: 10px;
 }
 
-/* ===========================
-   LAYOUT PRINCIPAL CON GRID
-   =========================== */
-main.contenedor {
-  display: grid;
-  grid-template-columns: 2fr 1fr; /* 2 columnas: noticias + multimedia */
-  gap: 20px;
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #ffcc00;
+  font-weight: bold;
 }
 
-/* ===========================
-   NOTICIAS (FLEXBOX)
-   =========================== */
-.noticias {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.noticias article {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-/* Efecto hover en artículos de noticias */
-.noticias article:hover {
-  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.4);
-  transform: translateY(-5px);
-}
-
-.noticias h3 {
-  color: #0d47a1;
-  margin-bottom: 10px;
-}
-
-/* ===========================
-   MULTIMEDIA
-   =========================== */
-.multimedia {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  height: 0;
-  margin-bottom: 20px;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* ===========================
-   PÁGINAS SECUNDARIAS (DEPORTES Y NEGOCIOS)
-   =========================== */
-main.pagina {
-  max-width: 800px;
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-main.pagina h2 {
-  color: #0d47a1;
-  margin-bottom: 15px;
-}
-
-main.pagina ul {
-  list-style: disc inside;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-/* ===========================
-   FOOTER
-   =========================== */
-footer {
-  background-color: #0d47a1;
+nav a:hover {
   color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-  font-size: 0.9rem;
 }
 
-/* ===========================
-   RESPONSIVE (MÓVILES)
-   =========================== */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-  }
+/* ================================
+   SECCIONES (MAIN, FOOTER)
+   ================================ */
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
 
-  main.contenedor {
-    grid-template-columns: 1fr;
-  }
+footer {
+  text-align: center;
+  background: #333;
+  color: white;
+  padding: 15px;
+  margin-top: 20px;
+}
 
-  .multimedia {
-    margin-top: 20px;
-  }
+/* ================================
+   ESTILO DE NOTICIAS (TIPO PERIÓDICO)
+   ================================ */
+.noticia {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+
+.noticia img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;   /* Mantiene proporción y recorta lo sobrante */
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.noticia h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: #003366;
+}
+
+.noticia p {
+  margin: 0;
+  color: #333;
 }

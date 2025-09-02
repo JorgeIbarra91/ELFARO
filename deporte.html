@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>El Faro - Deportes</title>
-  <!-- Enlace al CSS con versionado para evitar caché -->
-  <link rel="stylesheet" href="styles.css?v=11" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias de Deportes - El Faro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- HEADER -->
   <header>
-    <h1>EL FARO</h1>
+    <img src="Logo.png" alt="Logo El Faro" width="120">
+    <h1>El Faro - Deportes</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="deporte.html">Deportes</a>
+      <a href="negocios.html">Negocios</a>
+    </nav>
   </header>
 
-  <!-- MENÚ DE NAVEGACIÓN -->
-  <nav>
-    <ul>
-      <!-- Punto 6: vínculos con estilo hover -->
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="deporte.html">Deporte</a></li>
-      <li><a href="negocios.html">Negocios</a></li>
-    </ul>
-  </nav>
+  <main>
+    <h2>Noticias Deportivas</h2>
 
-  <!-- CONTENIDO PRINCIPAL: contenedor centrado con sombra -->
-  <main class="pagina">
-    <h2>Deportes</h2>
-    <ul>
-      <li>Selección lista para eliminatorias</li>
-      <li>Maratón de Santiago rompe récord</li>
-      <li>Torneo Nacional de Fútbol Sala</li>
-    </ul>
+    <article class="noticia">
+      <img src="imagenes/deporte1.jpg" alt="Deporte noticia 1">
+      <div>
+        <h3>Equipo logra una gran victoria</h3>
+        <p>Detalle del resultado del partido y comentarios sobre el desempeño...</p>
+      </div>
+    </article>
+
+    <article class="noticia">
+      <img src="imagenes/deporte2.jpg" alt="Deporte noticia 2">
+      <div>
+        <h3>Jugador récord histórico</h3>
+        <p>Resumen sobre el logro alcanzado y su relevancia en el deporte...</p>
+      </div>
+    </article>
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <p>© 2025 El Faro</p>
+    <p>© 2025 El Faro - Todos los derechos reservados</p>
   </footer>
 </body>
 </html>
