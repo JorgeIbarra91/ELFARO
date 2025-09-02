@@ -1,42 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noticias de Negocios - El Faro</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>El Faro - Inicio</title>
+  <!-- Enlace al CSS con versionado para evitar caché -->
+  <link rel="stylesheet" href="styles.css?v=12" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <img src="Logo.png" alt="Logo El Faro" width="120">
-    <h1>El Faro - Negocios</h1>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="deporte.html">Deportes</a>
-      <a href="negocios.html">Negocios</a>
-    </nav>
+    <h1>EL FARO</h1>
+    <img src="assets/images/logo.png" alt="Logo El Faro" width="120" />
   </header>
 
-  <main>
-    <h2>Noticias de Negocios</h2>
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="deporte.html">Deporte</a></li>
+      <li><a href="negocios.html">Negocios</a></li>
+    </ul>
+  </nav>
 
-    <article class="noticia">
-      <img src="imagenes/negocios1.jpg" alt="Negocios noticia 1">
-      <div>
-        <h3>Mercados en alza</h3>
-        <p>Un resumen sobre los movimientos recientes en la bolsa y economía...</p>
-      </div>
-    </article>
+  <!-- CONTENIDO PRINCIPAL: GRID 2 COLUMNAS -->
+  <main class="contenedor">
 
-    <article class="noticia">
-      <img src="imagenes/negocios2.jpg" alt="Negocios noticia 2">
-      <div>
-        <h3>Nueva inversión millonaria</h3>
-        <p>Empresas anuncian proyectos que impactarán en la región...</p>
+    <!-- SECCIÓN DE NOTICIAS tipo periódico -->
+    <section class="noticias">
+
+      <!-- Artículo 1 -->
+      <article class="noticia">
+        <img src="imagenes/noticia1.jpg" alt="Noticia sobre educación">
+        <div>
+          <h3>Gobierno anuncia inversión en educación</h3>
+          <p>Se aprobó un aumento del 20% en el presupuesto educativo.</p>
+        </div>
+      </article>
+
+      <!-- Artículo 2 -->
+      <article class="noticia">
+        <img src="imagenes/noticia2.jpg" alt="Noticia sobre ley ambiental">
+        <div>
+          <h3>Nueva ley ambiental aprobada</h3>
+          <p>Se implementarán medidas más estrictas contra la contaminación.</p>
+        </div>
+      </article>
+
+      <!-- Artículo 3 -->
+      <article class="noticia">
+        <img src="imagenes/noticia3.jpg" alt="Noticia sobre evento cultural">
+        <div>
+          <h3>Expo Cultural 2025</h3>
+          <p>La feria cultural reunirá a artistas de todo el país.</p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- SECCIÓN MULTIMEDIA: mantiene video + audio -->
+    <aside class="multimedia">
+      <h3>Video Destacado</h3>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/P-nK529Hf_U"
+          frameborder="0"
+          allowfullscreen></iframe>
       </div>
-    </article>
+
+      <h3>Audio Destacado</h3>
+      <iframe
+        width="100%"
+        height="166"
+        frameborder="no"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24">
+      </iframe>
+    </aside>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 El Faro - Todos los derechos reservados</p>
   </footer>

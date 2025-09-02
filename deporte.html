@@ -1,42 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noticias de Deportes - El Faro</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>El Faro - Deportes</title>
+  <link rel="stylesheet" href="styles.css?v=12" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <img src="Logo.png" alt="Logo El Faro" width="120">
-    <h1>El Faro - Deportes</h1>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="deporte.html">Deportes</a>
-      <a href="negocios.html">Negocios</a>
-    </nav>
+    <h1>EL FARO</h1>
+    <img src="assets/images/logo.png" alt="Logo El Faro" width="120" />
   </header>
 
-  <main>
-    <h2>Noticias Deportivas</h2>
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="deporte.html">Deporte</a></li>
+      <li><a href="negocios.html">Negocios</a></li>
+    </ul>
+  </nav>
 
-    <article class="noticia">
-      <img src="imagenes/deporte1.jpg" alt="Deporte noticia 1">
-      <div>
-        <h3>Equipo logra una gran victoria</h3>
-        <p>Detalle del resultado del partido y comentarios sobre el desempeño...</p>
-      </div>
-    </article>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenedor">
 
-    <article class="noticia">
-      <img src="imagenes/deporte2.jpg" alt="Deporte noticia 2">
-      <div>
-        <h3>Jugador récord histórico</h3>
-        <p>Resumen sobre el logro alcanzado y su relevancia en el deporte...</p>
+    <!-- Noticias deportivas -->
+    <section class="noticias">
+
+      <article class="noticia">
+        <img src="imagenes/deporte1.jpg" alt="Partido de fútbol">
+        <div>
+          <h3>Victoria histórica en el fútbol nacional</h3>
+          <p>El equipo local vence al campeón con un marcador sorprendente.</p>
+        </div>
+      </article>
+
+      <article class="noticia">
+        <img src="imagenes/deporte2.jpg" alt="Atleta en carrera">
+        <div>
+          <h3>Récord mundial en atletismo</h3>
+          <p>Un atleta logra superar la marca histórica en los 100 metros planos.</p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Multimedia -->
+    <aside class="multimedia">
+      <h3>Video Destacado</h3>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/VIDEO_DEPORTES"
+          frameborder="0"
+          allowfullscreen></iframe>
       </div>
-    </article>
+
+      <h3>Audio Destacado</h3>
+      <iframe 
+        width="100%" 
+        height="166" 
+        frameborder="no"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/example-deporte">
+      </iframe>
+    </aside>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 El Faro - Todos los derechos reservados</p>
   </footer>
