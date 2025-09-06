@@ -1,4 +1,4 @@
-// Fecha y hora
+// Muestra la fecha y hora en vivo
 function actualizarFechaHora() {
   const ahora = new Date();
   const fechaHora = document.getElementById('fechaHora');
@@ -8,16 +8,39 @@ function actualizarFechaHora() {
 }
 setInterval(actualizarFechaHora, 1000);
 
+// Actualiza el contador leyendo lo que existe en listaArticulos
+function actualizarContador() {
+  const lista = document.getElementById('listaArticulos');
+  const contador = document.getElementById('contadorArticulos');
+  if (lista && contador) {
+    let total = 0;
 
-// Formulario de artículos
+    // Si es página con cards (index.html)
+    if (lista.querySelectorAll('.col-md-4').length > 0) {
+      total = lista.querySelectorAll('.col-md-4').length;
+    }
+
+    // Si es página con lista ul (negocios y deporte)
+    else if (lista.querySelectorAll('li').length > 0) {
+      total = lista.querySelectorAll('li').length;
+    }
+
+    contador.textContent = "Total de artículos: " + total;
+  }
+}
+
+// Inicia la lógica del formulario de artículos
 function initFormularioArticulos() {
   const form = document.getElementById('formArticulo');
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+
       const titulo = document.getElementById('tituloArticulo').value;
       const desc = document.getElementById('descripcionArticulo').value;
       const lista = document.getElementById('listaArticulos');
+
+      // Si la página es index.html agrego como card
       if (lista && lista.classList.contains('row')) {
         const nuevo = `
           <div class="col-md-4">
@@ -29,19 +52,38 @@ function initFormularioArticulos() {
             </div>
           </div>`;
         lista.insertAdjacentHTML('beforeend', nuevo);
-      } else if (lista && lista.querySelector('ul')) {
+      } 
+
+      // Si la página es negocios.html o deporte.html agrego como ítem de la lista
+      else if (lista && lista.querySelector('ul')) {
         const nuevoItem = document.createElement('li');
         nuevoItem.classList.add('list-group-item');
         nuevoItem.textContent = titulo + " - " + desc;
         lista.querySelector('ul').appendChild(nuevoItem);
       }
+
+      // Actualizo contador y limpio el formulario
       actualizarContador();
       this.reset();
     });
   }
 }
 
-// Inicializar funciones
+// Inicia la lógica del formulario de contacto
+function initFormularioContacto() {
+  const form = document.getElementById('formContacto');
+  const mensajeEnviado = document.getElementById('mensajeEnviado');
+  if (form && mensajeEnviado) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      mensajeEnviado.classList.remove('d-none');
+      setTimeout(() => mensajeEnviado.classList.add('d-none'), 3000);
+      this.reset();
+    });
+  }
+}
+
+// Cargo todo cuando la página ya está lista
 document.addEventListener('DOMContentLoaded', function() {
   actualizarFechaHora();
   actualizarContador();
