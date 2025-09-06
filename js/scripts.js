@@ -1,4 +1,4 @@
-// Muestra la fecha y hora en vivo
+// Muestra la fecha y hora
 function actualizarFechaHora() {
   const ahora = new Date();
   const fechaHora = document.getElementById('fechaHora');
@@ -8,19 +8,20 @@ function actualizarFechaHora() {
 }
 setInterval(actualizarFechaHora, 1000);
 
-// Actualiza el contador leyendo lo que existe en listaArticulos
+// Cuenta siempre lo que está en la lista de artículos
 function actualizarContador() {
   const lista = document.getElementById('listaArticulos');
   const contador = document.getElementById('contadorArticulos');
+
   if (lista && contador) {
     let total = 0;
 
-    // Si es página con cards (index.html)
-    if (lista.querySelectorAll('.col-md-4').length > 0) {
-      total = lista.querySelectorAll('.col-md-4').length;
+    // Si la lista es por cards (index o deportes)
+    if (lista.querySelectorAll('.col-md-4, .col-md-6').length > 0) {
+      total = lista.querySelectorAll('.col-md-4, .col-md-6').length;
     }
 
-    // Si es página con lista ul (negocios y deporte)
+    // Si es tipo lista ul (negocios)
     else if (lista.querySelectorAll('li').length > 0) {
       total = lista.querySelectorAll('li').length;
     }
@@ -29,18 +30,16 @@ function actualizarContador() {
   }
 }
 
-// Inicia la lógica del formulario de artículos
+// Manejo del formulario de artículos
 function initFormularioArticulos() {
   const form = document.getElementById('formArticulo');
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-
       const titulo = document.getElementById('tituloArticulo').value;
       const desc = document.getElementById('descripcionArticulo').value;
       const lista = document.getElementById('listaArticulos');
 
-      // Si la página es index.html agrego como card
       if (lista && lista.classList.contains('row')) {
         const nuevo = `
           <div class="col-md-4">
@@ -53,8 +52,6 @@ function initFormularioArticulos() {
           </div>`;
         lista.insertAdjacentHTML('beforeend', nuevo);
       } 
-
-      // Si la página es negocios.html o deporte.html agrego como ítem de la lista
       else if (lista && lista.querySelector('ul')) {
         const nuevoItem = document.createElement('li');
         nuevoItem.classList.add('list-group-item');
@@ -62,14 +59,13 @@ function initFormularioArticulos() {
         lista.querySelector('ul').appendChild(nuevoItem);
       }
 
-      // Actualizo contador y limpio el formulario
       actualizarContador();
       this.reset();
     });
   }
 }
 
-// Inicia la lógica del formulario de contacto
+// Manejo del formulario de contacto
 function initFormularioContacto() {
   const form = document.getElementById('formContacto');
   const mensajeEnviado = document.getElementById('mensajeEnviado');
@@ -83,10 +79,10 @@ function initFormularioContacto() {
   }
 }
 
-// Cargo todo cuando la página ya está lista
+// Inicialización
 document.addEventListener('DOMContentLoaded', function() {
   actualizarFechaHora();
-  actualizarContador();
+  actualizarContador();  // Esto ahora cuenta también las noticias iniciales
   initFormularioArticulos();
   initFormularioContacto();
 });
