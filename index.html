@@ -84,6 +84,23 @@
       </div>
     </div>
 
+    <!-- Formulario de contacto -->
+    <div class="card my-4">
+      <div class="card-header bg-success text-white">Contacto</div>
+      <div class="card-body">
+        <form id="formContacto">
+          <div class="mb-3">
+            <input type="text" id="nombreContacto" class="form-control" placeholder="Tu nombre" required>
+          </div>
+          <div class="mb-3">
+            <textarea id="mensajeContacto" class="form-control" placeholder="Tu mensaje" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <div id="mensajeEnviado" class="alert alert-success mt-3 d-none">Mensaje enviado</div>
+      </div>
+    </div>
+  </main>
 
   <!-- Pie -->
   <footer class="bg-dark text-white text-center py-3">
