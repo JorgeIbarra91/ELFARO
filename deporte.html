@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>El Faro - Deportes</title>
-  <link rel="stylesheet" href="styles.css?v=12" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <h1>EL FARO</h1>
-    <img src="assets/images/logo.png" alt="Logo El Faro" width="120" />
+  <!-- Encabezado -->
+  <header class="bg-primary text-white text-center p-3">
+    <h1 class="mb-0">EL FARO</h1>
+    <div id="fechaHora" class="small"></div>
   </header>
 
-  <!-- MENÚ DE NAVEGACIÓN -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="deporte.html">Deporte</a></li>
-      <li><a href="negocios.html">Negocios</a></li>
-    </ul>
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Menú</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="deporte.html">Deporte</a></li>
+          <li class="nav-item"><a class="nav-link" href="negocios.html">Negocios</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="contenedor">
+  <main class="container my-4">
+    <h2>Noticias de Deportes</h2>
 
-    <!-- Noticias deportivas -->
-    <section class="noticias">
+    <!-- Contador -->
+    <div id="contadorArticulos" class="alert alert-info text-center">Total de artículos: 3</div>
 
-      <article class="noticia">
-        <img src="imagenes/deporte1.jpg" alt="Partido de fútbol">
-        <div>
-          <h3>Victoria histórica en el fútbol nacional</h3>
-          <p>El equipo local vence al campeón con un marcador sorprendente.</p>
-        </div>
-      </article>
-
-      <article class="noticia">
-        <img src="imagenes/deporte2.jpg" alt="Atleta en carrera">
-        <div>
-          <h3>Récord mundial en atletismo</h3>
-          <p>Un atleta logra superar la marca histórica en los 100 metros planos.</p>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- Multimedia -->
-    <aside class="multimedia">
-      <h3>Video Destacado</h3>
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/P-nK529Hf_U"
-          frameborder="0"
-          allowfullscreen></iframe>
+    <!-- Formulario -->
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">Agregar noticia deportiva</div>
+      <div class="card-body">
+        <form id="formArticulo">
+          <div class="mb-3">
+            <input type="text" id="tituloArticulo" class="form-control" placeholder="Título de la noticia" required>
+          </div>
+          <div class="mb-3">
+            <textarea id="descripcionArticulo" class="form-control" placeholder="Descripción de la noticia" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Agregar</button>
+        </form>
       </div>
+    </div>
 
-      <h3>Audio Destacado</h3>
-      <iframe
-        width="100%"
-        height="166"
-        frameborder="no"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24">
-      </iframe>
-    </aside>
+    <!-- Lista -->
+    <div id="listaArticulos">
+      <ul class="list-group">
+        <li class="list-group-item">Selección lista para eliminatorias</li>
+        <li class="list-group-item">Maratón de Santiago supera récord de inscritos</li>
+        <li class="list-group-item">Torneo Nacional de Fútbol Sala inicia en Valparaíso</li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="card my-4">
+      <div class="card-header bg-success text-white">Contacto</div>
+      <div class="card-body">
+        <form id="formContacto">
+          <div class="mb-3">
+            <input type="text" id="nombreContacto" class="form-control" placeholder="Tu nombre" required>
+          </div>
+          <div class="mb-3">
+            <textarea id="mensajeContacto" class="form-control" placeholder="Tu mensaje" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <div id="mensajeEnviado" class="alert alert-success mt-3 d-none">Mensaje enviado</div>
+      </div>
+    </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 El Faro - Todos los derechos reservados</p>
-  </footer>
+  <!-- Pie -->
+  <footer class="bg-dark text-white text-center py-3">© 2025 El Faro</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
