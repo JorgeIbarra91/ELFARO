@@ -1,86 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>El Faro - Inicio</title>
-  <!-- Enlace al CSS con versionado para evitar caché -->
-  <link rel="stylesheet" href="styles.css?v=12" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Llamo a Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <h1>EL FARO</h1>
-    <img src="assets/images/logo.png" alt="Logo El Faro" width="120" />
+  <!-- Encabezado con título, reloj y logo -->
+  <header class="bg-primary text-white text-center p-3">
+    <h1 class="mb-0">EL FARO</h1>
+    <div id="fechaHora" class="small"></div>
+    <img src="imagenes/logo.png" alt="Logo El Faro" width="120" class="mt-2">
   </header>
 
-  <!-- MENÚ DE NAVEGACIÓN -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="deporte.html">Deporte</a></li>
-      <li><a href="negocios.html">Negocios</a></li>
-    </ul>
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Menú</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="deporte.html">Deporte</a></li>
+          <li class="nav-item"><a class="nav-link" href="negocios.html">Negocios</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <!-- CONTENIDO PRINCIPAL: GRID 2 COLUMNAS -->
-  <main class="contenedor">
+  <!-- Contenido -->
+  <main class="container my-4">
+    <!-- Contador de artículos -->
+    <div id="contadorArticulos" class="alert alert-info text-center">Total de artículos: 3</div>
 
-    <!-- SECCIÓN DE NOTICIAS tipo periódico -->
-    <section class="noticias">
-
-      <!-- Artículo 1 -->
-      <article class="noticia">
-        <img src="imagenes/noticia1.jpg" alt="Noticia sobre educación">
-        <div>
-          <h3>Gobierno anuncia inversión en educación</h3>
-          <p>Se aprobó un aumento del 20% en el presupuesto educativo.</p>
-        </div>
-      </article>
-
-      <!-- Artículo 2 -->
-      <article class="noticia">
-        <img src="imagenes/noticia2.jpg" alt="Noticia sobre ley ambiental">
-        <div>
-          <h3>Nueva ley ambiental aprobada</h3>
-          <p>Se implementarán medidas más estrictas contra la contaminación.</p>
-        </div>
-      </article>
-
-      <!-- Artículo 3 -->
-      <article class="noticia">
-        <img src="imagenes/noticia3.jpg" alt="Noticia sobre evento cultural">
-        <div>
-          <h3>Expo Cultural 2025</h3>
-          <p>La feria cultural reunirá a artistas de todo el país.</p>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- SECCIÓN MULTIMEDIA: mantiene video + audio -->
-    <aside class="multimedia">
-      <h3>Video Destacado</h3>
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/P-nK529Hf_U"
-          frameborder="0"
-          allowfullscreen></iframe>
+    <!-- Formulario para nuevos artículos -->
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">Agregar artículo</div>
+      <div class="card-body">
+        <form id="formArticulo">
+          <div class="mb-3">
+            <input type="text" id="tituloArticulo" class="form-control" placeholder="Título" required>
+          </div>
+          <div class="mb-3">
+            <textarea id="descripcionArticulo" class="form-control" placeholder="Descripción" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Agregar</button>
+        </form>
       </div>
+    </div>
 
-      <h3>Audio Destacado</h3>
-      <iframe
-        width="100%"
-        height="166"
-        frameborder="no"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24">
-      </iframe>
-    </aside>
-  </main>
+    <!-- Lista de artículos -->
+    <div id="listaArticulos" class="row g-3">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="imagenes/noticia1.jpg" class="card-img-top" alt="Noticia">
+          <div class="card-body">
+            <h5 class="card-title">Gobierno anuncia inversión en educación</h5>
+            <p class="card-text">Se aprueba un aumento de 20 por ciento en el presupuesto educativo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="imagenes/noticia2.jpg" class="card-img-top" alt="Noticia">
+          <div class="card-body">
+            <h5 class="card-title">Nueva ley ambiental</h5>
+            <p class="card-text">Se aplican medidas más estrictas contra la contaminación.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="imagenes/noticia3.jpg" class="card-img-top" alt="Noticia">
+          <div class="card-body">
+            <h5 class="card-title">Expo Cultural 2025</h5>
+            <p class="card-text">Se reúnen artistas de todo el país.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 El Faro - Todos los derechos reservados</p>
+
+  <!-- Pie -->
+  <footer class="bg-dark text-white text-center py-3">
+    © 2025 El Faro
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
