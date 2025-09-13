@@ -1,88 +1,210 @@
-// Muestra la fecha y hora
-function actualizarFechaHora() {
-  const ahora = new Date();
-  const fechaHora = document.getElementById('fechaHora');
-  if (fechaHora) {
-    fechaHora.textContent = ahora.toLocaleString('es-CL');
-  }
-}
-setInterval(actualizarFechaHora, 1000);
+// Variables globales
+let articulosJSON = null;
+let contadorTotal = 0;
 
-// Cuenta siempre lo que está en la lista de artículos
-function actualizarContador() {
-  const lista = document.getElementById('listaArticulos');
-  const contador = document.getElementById('contadorArticulos');
-
-  if (lista && contador) {
-    let total = 0;
-
-    // Si la lista es por cards (index o deportes)
-    if (lista.querySelectorAll('.col-md-4, .col-md-6').length > 0) {
-      total = lista.querySelectorAll('.col-md-4, .col-md-6').length;
-    }
-
-    // Si es tipo lista ul (negocios)
-    else if (lista.querySelectorAll('li').length > 0) {
-      total = lista.querySelectorAll('li').length;
-    }
-
-    contador.textContent = "Total de artículos: " + total;
-  }
-}
-
-// Manejo del formulario de artículos
-function initFormularioArticulos() {
-  const form = document.getElementById('formArticulo');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const titulo = document.getElementById('tituloArticulo').value;
-      const desc = document.getElementById('descripcionArticulo').value;
-      const lista = document.getElementById('listaArticulos');
-
-      if (lista && lista.classList.contains('row')) {
-        const nuevo = `
-          <div class="col-md-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <h5 class="card-title">${titulo}</h5>
-                <p class="card-text">${desc}</p>
-              </div>
-            </div>
-          </div>`;
-        lista.insertAdjacentHTML('beforeend', nuevo);
-      } 
-      else if (lista && lista.querySelector('ul')) {
-        const nuevoItem = document.createElement('li');
-        nuevoItem.classList.add('list-group-item');
-        nuevoItem.textContent = titulo + " - " + desc;
-        lista.querySelector('ul').appendChild(nuevoItem);
-      }
-
-      actualizarContador();
-      this.reset();
-    });
-  }
-}
-
-// Manejo del formulario de contacto
-function initFormularioContacto() {
-  const form = document.getElementById('formContacto');
-  const mensajeEnviado = document.getElementById('mensajeEnviado');
-  if (form && mensajeEnviado) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      mensajeEnviado.classList.remove('d-none');
-      setTimeout(() => mensajeEnviado.classList.add('d-none'), 3000);
-      this.reset();
-    });
-  }
-}
-
-// Inicialización
+// Funcion que se ejecuta cuando la pagina carga completamente
 document.addEventListener('DOMContentLoaded', function() {
-  actualizarFechaHora();
-  actualizarContador();  // Esto ahora cuenta también las noticias iniciales
-  initFormularioArticulos();
-  initFormularioContacto();
+    // Inicializar reloj
+    actualizarReloj();
+    setInterval(actualizarReloj, 1000);
+    
+    // Contar articulos existentes al cargar
+    contarArticulosExistentes();
+    
+    // Configurar eventos de formularios
+    configurarFormularios();
+    
+    // Configurar boton AJAX
+    configurarBotonAjax();
 });
+
+// Actualiza fecha y hora en tiempo real
+function actualizarReloj() {
+    const ahora = new Date();
+    
+    // Formatear fecha
+    const fecha = ahora.toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+    
+    // Formatear hora
+    const hora = ahora.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    
+    // Actualizar elementos en pantalla
+    document.getElementById('fecha-actual').textContent = fecha;
+    document.getElementById('hora-actual').textContent = hora;
+}
+
+// Cuenta articulos que ya existen en la pagina
+function contarArticulosExistentes() {
+    const articulosExistentes = document.querySelectorAll('.articulo-existente');
+    const articulosDinamicos = document.querySelectorAll('#articulos-dinamicos .card');
+    
+    contadorTotal = articulosExistentes.length + articulosDinamicos.length;
+    actualizarContador();
+}
+
+// Actualiza el numero mostrado en el contador
+function actualizarContador() {
+    const contador = document.getElementById('contador-articulos');
+    if (contador) {
+        contador.textContent = contadorTotal;
+    }
+}
+
+// Configura todos los formularios de la pagina
+function configurarFormularios() {
+    // Formulario de contacto
+    const formContacto = document.getElementById('contacto-form');
+    if (formContacto) {
+        formContacto.addEventListener('submit', enviarContacto);
+    }
+    
+    // Formulario de articulos
+    const formArticulo = document.getElementById('form-articulo');
+    if (formArticulo) {
+        formArticulo.addEventListener('submit', agregarArticulo);
+    }
+}
+
+// Configura el boton para cargar articulos con AJAX
+function configurarBotonAjax() {
+    const boton = document.getElementById('cargar-articulos');
+    if (boton) {
+        boton.addEventListener('click', cargarArticulosAjax);
+    }
+}
+
+// Carga articulos desde JSON usando AJAX
+function cargarArticulosAjax(evento) {
+    const boton = evento.target;
+    const seccion = boton.getAttribute('data-seccion');
+    
+    // Cambiar texto del boton mientras carga
+    boton.textContent = 'Cargando...';
+    boton.disabled = true;
+    
+    // Hacer peticion AJAX
+    fetch('articulos.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar articulos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            articulosJSON = data;
+            mostrarArticulos(seccion);
+            
+            // Restaurar boton
+            boton.textContent = 'Articulos cargados';
+            boton.classList.remove('btn-success');
+            boton.classList.add('btn-secondary');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('No se pudieron cargar los articulos');
+            
+            // Restaurar boton en caso de error
+            boton.textContent = 'Cargar mas noticias';
+            boton.disabled = false;
+        });
+}
+
+// Muestra articulos de una seccion especifica
+function mostrarArticulos(seccion) {
+    const contenedor = document.getElementById('articulos-dinamicos');
+    
+    if (!articulosJSON || !articulosJSON[seccion]) {
+        return;
+    }
+    
+    // Limpiar contenedor
+    contenedor.innerHTML = '';
+    
+    // Agregar cada articulo
+    articulosJSON[seccion].forEach(articulo => {
+        const articuloHTML = crearArticuloHTML(articulo);
+        contenedor.appendChild(articuloHTML);
+        contadorTotal++;
+    });
+    
+    // Actualizar contador
+    actualizarContador();
+}
+
+// Crea el HTML de un articulo
+function crearArticuloHTML(articulo) {
+    const div = document.createElement('div');
+    div.className = 'col-md-6 mb-3';
+    
+    div.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">${articulo.titulo}</h5>
+                <p class="card-text">${articulo.contenido}</p>
+                <small class="text-muted">${articulo.fecha}</small>
+            </div>
+        </div>
+    `;
+    
+    return div;
+}
+
+// Maneja el envio del formulario de contacto
+function enviarContacto(evento) {
+    evento.preventDefault();
+    
+    // Obtener datos del formulario
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const mensaje = document.getElementById('mensaje').value;
+    
+    // Simular envio (en proyecto real iria a servidor)
+    setTimeout(() => {
+        alert('Mensaje enviado correctamente');
+        
+        // Limpiar formulario
+        document.getElementById('contacto-form').reset();
+    }, 500);
+}
+
+// Maneja el envio del formulario de articulos
+function agregarArticulo(evento) {
+    evento.preventDefault();
+    
+    // Obtener datos
+    const titulo = document.getElementById('titulo-articulo').value;
+    const contenido = document.getElementById('contenido-articulo').value;
+    
+    // Crear fecha actual
+    const fecha = new Date().toLocaleDateString('es-ES');
+    
+    // Crear articulo
+    const nuevoArticulo = {
+        titulo: titulo,
+        contenido: contenido,
+        fecha: fecha
+    };
+    
+    // Agregar al DOM
+    const contenedor = document.getElementById('articulos-dinamicos');
+    const articuloHTML = crearArticuloHTML(nuevoArticulo);
+    contenedor.appendChild(articuloHTML);
+    
+    // Actualizar contador
+    contadorTotal++;
+    actualizarContador();
+    
+    // Limpiar formulario
+    document.getElementById('form-articulo').reset();
+    
+    // Mostrar confirmacion
+    alert('Articulo agregado correctamente');
+}
