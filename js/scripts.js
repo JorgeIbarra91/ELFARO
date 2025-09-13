@@ -1,56 +1,58 @@
-// Variables globales
-let articulosJSON = null;
+// variable global con el total de articulos
 let contadorTotal = 0;
 
-// Funcion que se ejecuta cuando la pagina carga completamente
+// lista de imagenes para asignar a articulos nuevos de forma aleatoria
+const imagenesAleatorias = [
+    "imagenes/noticia1.jpg",
+    "imagenes/noticia2.jpg",
+    "imagenes/noticia3.jpg",
+    "imagenes/deporte1.jpg",
+    "imagenes/deporte2.jpg",
+    "imagenes/negocios1.jpg",
+    "imagenes/negocios2.jpg"
+];
+
+// se ejecuta cuando el documento esta listo
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar reloj
     actualizarReloj();
     setInterval(actualizarReloj, 1000);
-    
-    // Contar articulos existentes al cargar
+
     contarArticulosExistentes();
-    
-    // Configurar eventos de formularios
     configurarFormularios();
-    
-    // Configurar boton AJAX
     configurarBotonAjax();
 });
 
-// Actualiza fecha y hora en tiempo real
+
+// funcion reloj
 function actualizarReloj() {
     const ahora = new Date();
-    
-    // Formatear fecha
+
     const fecha = ahora.toLocaleDateString('es-ES', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
+        day: '2-digit', month: '2-digit', year: 'numeric'
     });
-    
-    // Formatear hora
+
     const hora = ahora.toLocaleTimeString('es-ES', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
     });
-    
-    // Actualizar elementos en pantalla
-    document.getElementById('fecha-actual').textContent = fecha;
-    document.getElementById('hora-actual').textContent = hora;
+
+    const spanFecha = document.getElementById('fecha-actual');
+    const spanHora = document.getElementById('hora-actual');
+
+    if (spanFecha && spanHora) {
+        spanFecha.textContent = fecha;
+        spanHora.textContent = hora;
+    }
 }
 
-// Cuenta articulos que ya existen en la pagina
+
+// funciones contador
 function contarArticulosExistentes() {
-    const articulosExistentes = document.querySelectorAll('.articulo-existente');
-    const articulosDinamicos = document.querySelectorAll('#articulos-dinamicos .card');
-    
-    contadorTotal = articulosExistentes.length + articulosDinamicos.length;
+    const existentes = document.querySelectorAll('.articulo-existente').length;
+    const dinamicos = document.querySelectorAll('#articulos-dinamicos .card').length;
+    contadorTotal = existentes + dinamicos;
     actualizarContador();
 }
 
-// Actualiza el numero mostrado en el contador
 function actualizarContador() {
     const contador = document.getElementById('contador-articulos');
     if (contador) {
@@ -58,94 +60,93 @@ function actualizarContador() {
     }
 }
 
-// Configura todos los formularios de la pagina
+
+// configuracion de formularios
 function configurarFormularios() {
-    // Formulario de contacto
+    // formulario de contacto
     const formContacto = document.getElementById('contacto-form');
     if (formContacto) {
-        formContacto.addEventListener('submit', enviarContacto);
+        formContacto.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensaje enviado correctamente');
+            formContacto.reset();
+        });
     }
-    
-    // Formulario de articulos
+
+    // formulario para agregar articulos
     const formArticulo = document.getElementById('form-articulo');
     if (formArticulo) {
-        formArticulo.addEventListener('submit', agregarArticulo);
+        formArticulo.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const titulo = document.getElementById('titulo-articulo').value;
+            const contenido = document.getElementById('contenido-articulo').value;
+            const fecha = new Date().toLocaleDateString('es-ES');
+
+            // se elige una imagen al azar de la lista
+            const imagenRandom = imagenesAleatorias[Math.floor(Math.random() * imagenesAleatorias.length)];
+
+            const nuevoArticulo = {
+                titulo: titulo,
+                contenido: contenido,
+                fecha: fecha,
+                imagen: imagenRandom
+            };
+
+            const contenedor = document.getElementById('articulos-dinamicos');
+            contenedor.appendChild(crearArticuloHTML(nuevoArticulo));
+
+            contadorTotal++;
+            actualizarContador();
+
+            formArticulo.reset();
+            alert('Articulo agregado correctamente');
+        });
     }
 }
 
-// Configura el boton para cargar articulos con AJAX
+// configuracion boton ajax
 function configurarBotonAjax() {
     const boton = document.getElementById('cargar-articulos');
     if (boton) {
-        boton.addEventListener('click', cargarArticulosAjax);
-    }
-}
-
-// Carga articulos desde JSON usando AJAX
-function cargarArticulosAjax(evento) {
-    const boton = evento.target;
-    const seccion = boton.getAttribute('data-seccion');
-    
-    // Cambiar texto del boton mientras carga
-    boton.textContent = 'Cargando...';
-    boton.disabled = true;
-    
-    // Hacer peticion AJAX
-    fetch('articulos.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al cargar articulos');
-            }
-            return response.json();
-        })
-        .then(data => {
-            articulosJSON = data;
-            mostrarArticulos(seccion);
-            
-            // Restaurar boton
-            boton.textContent = 'Articulos cargados';
-            boton.classList.remove('btn-success');
-            boton.classList.add('btn-secondary');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('No se pudieron cargar los articulos');
-            
-            // Restaurar boton en caso de error
-            boton.textContent = 'Cargar mas noticias';
-            boton.disabled = false;
+        boton.addEventListener('click', function() {
+            const seccion = boton.getAttribute('data-seccion');
+            fetch('articulos.json')
+                .then(res => res.json())
+                .then(data => {
+                    if (data[seccion]) {
+                        const contenedor = document.getElementById('articulos-dinamicos');
+                        data[seccion].forEach(art => {
+                            contenedor.appendChild(crearArticuloHTML(art));
+                            contadorTotal++;
+                        });
+                        actualizarContador();
+                        boton.disabled = true;
+                        boton.textContent = 'Articulos cargados';
+                        boton.classList.remove('btn-success');
+                        boton.classList.add('btn-secondary');
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Error cargando articulos');
+                });
         });
-}
-
-// Muestra articulos de una seccion especifica
-function mostrarArticulos(seccion) {
-    const contenedor = document.getElementById('articulos-dinamicos');
-    
-    if (!articulosJSON || !articulosJSON[seccion]) {
-        return;
     }
-    
-    // Limpiar contenedor
-    contenedor.innerHTML = '';
-    
-    // Agregar cada articulo
-    articulosJSON[seccion].forEach(articulo => {
-        const articuloHTML = crearArticuloHTML(articulo);
-        contenedor.appendChild(articuloHTML);
-        contadorTotal++;
-    });
-    
-    // Actualizar contador
-    actualizarContador();
 }
 
-// Crea el HTML de un articulo
+
+// crear tarjeta de articulo
 function crearArticuloHTML(articulo) {
     const div = document.createElement('div');
     div.className = 'col-md-6 mb-3';
-    
+
+    // si el articulo trae imagen se agrega en la tarjeta
+    const imgHTML = articulo.imagen ? `<img src="${articulo.imagen}" class="card-img-top" alt="imagen-articulo">` : '';
+
     div.innerHTML = `
         <div class="card">
+            ${imgHTML}
             <div class="card-body">
                 <h5 class="card-title">${articulo.titulo}</h5>
                 <p class="card-text">${articulo.contenido}</p>
@@ -153,58 +154,5 @@ function crearArticuloHTML(articulo) {
             </div>
         </div>
     `;
-    
     return div;
-}
-
-// Maneja el envio del formulario de contacto
-function enviarContacto(evento) {
-    evento.preventDefault();
-    
-    // Obtener datos del formulario
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const mensaje = document.getElementById('mensaje').value;
-    
-    // Simular envio (en proyecto real iria a servidor)
-    setTimeout(() => {
-        alert('Mensaje enviado correctamente');
-        
-        // Limpiar formulario
-        document.getElementById('contacto-form').reset();
-    }, 500);
-}
-
-// Maneja el envio del formulario de articulos
-function agregarArticulo(evento) {
-    evento.preventDefault();
-    
-    // Obtener datos
-    const titulo = document.getElementById('titulo-articulo').value;
-    const contenido = document.getElementById('contenido-articulo').value;
-    
-    // Crear fecha actual
-    const fecha = new Date().toLocaleDateString('es-ES');
-    
-    // Crear articulo
-    const nuevoArticulo = {
-        titulo: titulo,
-        contenido: contenido,
-        fecha: fecha
-    };
-    
-    // Agregar al DOM
-    const contenedor = document.getElementById('articulos-dinamicos');
-    const articuloHTML = crearArticuloHTML(nuevoArticulo);
-    contenedor.appendChild(articuloHTML);
-    
-    // Actualizar contador
-    contadorTotal++;
-    actualizarContador();
-    
-    // Limpiar formulario
-    document.getElementById('form-articulo').reset();
-    
-    // Mostrar confirmacion
-    alert('Articulo agregado correctamente');
 }

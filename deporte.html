@@ -39,27 +39,33 @@
     </div>
   </div>
 
-  <!-- Noticias de deportes -->
+  <!-- Contenido -->
   <main class="container my-5">
     <div class="row">
       <div class="col-lg-8">
         <h2>Noticias Deportivas</h2>
+
+        <!-- Articulo fijo -->
         <div class="card mb-3 articulo-existente">
+          <img src="imagenes/deporte1.jpg" class="card-img-top" alt="deporte1">
           <div class="card-body">
             <h5 class="card-title">Seleccion lista para eliminatorias</h5>
-            <p>Preparacion con partidos antes del torneo oficial.</p>
+            <p>El equipo nacional completa preparacion con partidos previos al torneo oficial.</p>
             <small class="text-muted">14 Enero 2024</small>
           </div>
         </div>
 
+        <!-- Contenedor dinamico -->
+        <div id="articulos-dinamicos" class="row"></div>
+
+        <!-- Boton mas noticias -->
         <div class="text-center my-4">
           <button id="cargar-articulos" class="btn btn-success" data-seccion="deportes">Cargar mas noticias</button>
         </div>
 
-        <div id="articulos-dinamicos" class="row"></div>
-
+        <!-- Form agregar noticia -->
         <div class="card mt-4">
-          <div class="card-header bg-success text-white">Agregar Noticia</div>
+          <div class="card-header bg-success text-white">Agregar Noticia Deportiva</div>
           <div class="card-body">
             <form id="form-articulo">
               <input type="text" id="titulo-articulo" class="form-control mb-2" placeholder="Titulo" required>
@@ -83,7 +89,8 @@
         <div class="card mb-4">
           <div class="card-header bg-secondary text-white">Audio Destacado</div>
           <div class="card-body">
-            <iframe width="100%" height="166" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24"></iframe>
+            <iframe width="100%" height="166" frameborder="no"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24"></iframe>
           </div>
         </div>
         <div class="card">
@@ -101,8 +108,10 @@
     </div>
   </main>
 
+  <!-- Pie -->
   <footer class="bg-dark text-white text-center py-3">&copy; 2025 El Faro</footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/scripts.js"></script>
 </body>

@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Barra de navegacion -->
+  <!-- Barra navegacion -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">EL FARO</a>
@@ -39,29 +39,30 @@
     </div>
   </div>
 
-  <!-- Noticias de negocios -->
   <main class="container my-5">
     <div class="row">
       <div class="col-lg-8">
         <h2>Noticias de Negocios</h2>
-        <!-- Articulo fijo inicial -->
+
+        <!-- Articulo fijo -->
         <div class="card mb-3 articulo-existente">
+          <img src="imagenes/negocios1.jpg" class="card-img-top" alt="negocios1">
           <div class="card-body">
             <h5 class="card-title">Startup chilena recibe inversion</h5>
-            <p>Empresa tecnologica consigue financiamiento por dos millones de dolares.</p>
+            <p>Una empresa tecnologica consigue financiamiento por dos millones de dolares.</p>
             <small class="text-muted">13 Enero 2024</small>
           </div>
         </div>
 
-        <!-- Boton AJAX para cargar noticias de negocios -->
+        <!-- Contenedor dinamico -->
+        <div id="articulos-dinamicos" class="row"></div>
+
+        <!-- Boton cargar -->
         <div class="text-center my-4">
           <button id="cargar-articulos" class="btn btn-success" data-seccion="negocios">Cargar mas noticias</button>
         </div>
 
-        <!-- Contenedor para articulos dinamicos -->
-        <div id="articulos-dinamicos" class="row"></div>
-
-        <!-- Formulario para agregar noticia -->
+        <!-- Form agregar -->
         <div class="card mt-4">
           <div class="card-header bg-warning text-dark">Agregar Noticia de Negocios</div>
           <div class="card-body">
@@ -76,7 +77,6 @@
 
       <!-- Barra lateral -->
       <div class="col-lg-4">
-        <!-- Video embebido -->
         <div class="card mb-4">
           <div class="card-header bg-secondary text-white">Video Destacado</div>
           <div class="card-body">
@@ -85,21 +85,19 @@
             </div>
           </div>
         </div>
-        <!-- Audio embebido -->
         <div class="card mb-4">
           <div class="card-header bg-secondary text-white">Audio Destacado</div>
           <div class="card-body">
-            <iframe width="100%" height="166" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24"></iframe>
+            <iframe width="100%" height="166" frameborder="no"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/audios-entrevistas-110815855/entrevista-a-pedro-delgado-con-andrea-bernal-en-ntn-24"></iframe>
           </div>
         </div>
-        <!-- Formulario de contacto empresarial -->
         <div class="card">
           <div class="card-header">Contacto Empresarial</div>
           <div class="card-body">
             <form id="contacto-form">
               <input type="text" id="nombre" class="form-control mb-2" placeholder="Nombre" required>
               <input type="email" id="email" class="form-control mb-2" placeholder="Email" required>
-              <input type="text" id="empresa" class="form-control mb-2" placeholder="Empresa">
               <textarea id="mensaje" class="form-control mb-2" placeholder="Mensaje" required></textarea>
               <button type="submit" class="btn btn-info w-100">Enviar</button>
             </form>
@@ -109,7 +107,6 @@
     </div>
   </main>
 
-  <!-- Pie -->
   <footer class="bg-dark text-white text-center py-3">&copy; 2025 El Faro</footer>
 
   <!-- Scripts -->
