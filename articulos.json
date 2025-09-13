@@ -1,26 +1,30 @@
 {
   "deportes": [
     {
-      "titulo": "Campeonato Nacional de Fútbol",
-      "contenido": "Los equipos se preparan para la nueva temporada con grandes expectativas.",
-      "fecha": "2024-01-15"
+      "titulo": "Final de campeonato nacional",
+      "contenido": "El equipo local se corona campeon tras una temporada intensa.",
+      "fecha": "12/09/2025",
+      "imagen": "imagenes/deporte1.jpg"
     },
     {
-      "titulo": "Mundial de Atletismo 2024",
-      "contenido": "Atletas chilenos clasifican para competencias internacionales.",
-      "fecha": "2024-01-10"
+      "titulo": "Atletismo internacional",
+      "contenido": "Gran participacion de atletas chilenos en torneo mundial.",
+      "fecha": "10/09/2025",
+      "imagen": "imagenes/deporte2.jpg"
     }
   ],
   "negocios": [
     {
-      "titulo": "Crecimiento del Sector Tecnológico",
-      "contenido": "Las empresas tech aumentan sus inversiones en el país.",
-      "fecha": "2024-01-12"
+      "titulo": "Nueva ley de comercio",
+      "contenido": "El congreso aprueba medidas que benefician a pequenas empresas.",
+      "fecha": "11/09/2025",
+      "imagen": "imagenes/negocios1.jpg"
     },
     {
-      "titulo": "Nuevas Regulaciones Financieras",
-      "contenido": "El gobierno anuncia cambios en las políticas bancarias.",
-      "fecha": "2024-01-08"
+      "titulo": "Exportaciones en alza",
+      "contenido": "Chile aumenta volumen de exportacion de frutas a Europa.",
+      "fecha": "09/09/2025",
+      "imagen": "imagenes/negocios2.jpg"
     }
   ]
 }

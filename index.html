@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>El Faro - Inicio</title>
-  <!-- Enlace a Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -22,7 +21,7 @@
     </div>
   </nav>
 
-  <!-- Cabecera con fecha y hora -->
+  <!-- Cabecera con reloj -->
   <header class="bg-light py-3">
     <div class="container d-flex justify-content-between">
       <h1 class="text-primary">EL FARO</h1>
@@ -33,21 +32,22 @@
     </div>
   </header>
 
-  <!-- Contador de articulos -->
+  <!-- Contador -->
   <div class="container mt-3">
     <div class="alert alert-info text-center">
       Total de Articulos: <span id="contador-articulos" style="color: red; font-weight: bold;">0</span>
     </div>
   </div>
 
-  <!-- Cuerpo principal -->
+  <!-- Noticias -->
   <main class="container my-5">
     <div class="row">
-      <!-- Seccion de noticias -->
+      <!-- Seccion principal -->
       <div class="col-lg-8">
         <h2>Noticias Principales</h2>
-        <!-- Articulo fijo inicial -->
+        <!-- Articulo inicial fijo -->
         <div class="card mb-3 articulo-existente">
+          <img src="imagenes/noticia1.jpg" class="card-img-top" alt="noticia1">
           <div class="card-body">
             <h5 class="card-title">Gobierno anuncia inversion en educacion</h5>
             <p>Aumento del 20 por ciento en el presupuesto educativo.</p>
@@ -60,10 +60,10 @@
           <button id="cargar-articulos" class="btn btn-success" data-seccion="deportes">Cargar mas noticias</button>
         </div>
 
-        <!-- Aqui se insertan articulos dinamicos -->
+        <!-- Contenedor de articulos dinamicos -->
         <div id="articulos-dinamicos" class="row"></div>
 
-        <!-- Formulario para agregar articulo manual -->
+        <!-- Formulario agregar articulo -->
         <div class="card mt-4">
           <div class="card-header bg-primary text-white">Agregar Articulo</div>
           <div class="card-body">
@@ -78,7 +78,6 @@
 
       <!-- Barra lateral -->
       <div class="col-lg-4">
-        <!-- Video-->
         <div class="card mb-4">
           <div class="card-header bg-secondary text-white">Video Destacado</div>
           <div class="card-body">
@@ -87,7 +86,6 @@
             </div>
           </div>
         </div>
-        <!-- Audio -->
         <div class="card mb-4">
           <div class="card-header bg-secondary text-white">Audio Destacado</div>
           <div class="card-body">
@@ -96,7 +94,6 @@
             </iframe>
           </div>
         </div>
-        <!-- Formulario de contacto -->
         <div class="card">
           <div class="card-header">Contacto</div>
           <div class="card-body">
@@ -115,7 +112,6 @@
   <!-- Pie -->
   <footer class="bg-dark text-white text-center py-3">&copy; 2025 El Faro</footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/scripts.js"></script>
 </body>
