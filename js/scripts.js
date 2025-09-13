@@ -22,8 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     configurarBotonAjax();
 });
 
-
+// -----------------------------
 // funcion reloj
+// -----------------------------
 function actualizarReloj() {
     const ahora = new Date();
 
@@ -44,8 +45,9 @@ function actualizarReloj() {
     }
 }
 
-
+// -----------------------------
 // funciones contador
+// -----------------------------
 function contarArticulosExistentes() {
     const existentes = document.querySelectorAll('.articulo-existente').length;
     const dinamicos = document.querySelectorAll('#articulos-dinamicos .card').length;
@@ -60,8 +62,9 @@ function actualizarContador() {
     }
 }
 
-
+// -----------------------------
 // configuracion de formularios
+// -----------------------------
 function configurarFormularios() {
     // formulario de contacto
     const formContacto = document.getElementById('contacto-form');
@@ -105,7 +108,9 @@ function configurarFormularios() {
     }
 }
 
+// -----------------------------
 // configuracion boton ajax
+// -----------------------------
 function configurarBotonAjax() {
     const boton = document.getElementById('cargar-articulos');
     if (boton) {
@@ -135,14 +140,21 @@ function configurarBotonAjax() {
     }
 }
 
-
+// -----------------------------
 // crear tarjeta de articulo
+// -----------------------------
 function crearArticuloHTML(articulo) {
     const div = document.createElement('div');
     div.className = 'col-md-6 mb-3';
 
-    // si el articulo trae imagen se agrega en la tarjeta
-    const imgHTML = articulo.imagen ? `<img src="${articulo.imagen}" class="card-img-top" alt="imagen-articulo">` : '';
+    // si el articulo trae imagen se muestra dentro de un ratio bootstrap
+    const imgHTML = articulo.imagen 
+        ? `
+        <div class="ratio ratio-16x9">
+            <img src="${articulo.imagen}" class="card-img-top" alt="imagen-articulo" style="object-fit:cover;">
+        </div>
+        `
+        : '';
 
     div.innerHTML = `
         <div class="card">
