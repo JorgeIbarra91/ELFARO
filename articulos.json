@@ -1,0 +1,26 @@
+{
+  "deportes": [
+    {
+      "titulo": "Campeonato Nacional de Fútbol",
+      "contenido": "Los equipos se preparan para la nueva temporada con grandes expectativas.",
+      "fecha": "2024-01-15"
+    },
+    {
+      "titulo": "Mundial de Atletismo 2024",
+      "contenido": "Atletas chilenos clasifican para competencias internacionales.",
+      "fecha": "2024-01-10"
+    }
+  ],
+  "negocios": [
+    {
+      "titulo": "Crecimiento del Sector Tecnológico",
+      "contenido": "Las empresas tech aumentan sus inversiones en el país.",
+      "fecha": "2024-01-12"
+    },
+    {
+      "titulo": "Nuevas Regulaciones Financieras",
+      "contenido": "El gobierno anuncia cambios en las políticas bancarias.",
+      "fecha": "2024-01-08"
+    }
+  ]
+}
